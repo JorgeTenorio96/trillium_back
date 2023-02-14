@@ -1,7 +1,7 @@
 package com.salesianostriana.edu.trillium.security.errorhandling;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

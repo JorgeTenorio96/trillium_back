@@ -1,7 +1,7 @@
 package com.salesianostriana.edu.trillium.security.jwt.refresh;
 
 import com.salesianostriana.edu.trillium.user.model.User;
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.NaturalId;
 import org.springframework.data.annotation.CreatedDate;

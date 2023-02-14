@@ -1,11 +1,11 @@
 package com.salesianostriana.edu.trillium.security.jwt.refresh;
 
 import com.salesianostriana.edu.trillium.user.model.User;
-import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;

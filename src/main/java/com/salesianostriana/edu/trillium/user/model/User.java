@@ -1,6 +1,6 @@
 package com.salesianostriana.edu.trillium.user.model;
 
-import jakarta.persistence.*;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,6 +16,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 import java.util.Collection;
