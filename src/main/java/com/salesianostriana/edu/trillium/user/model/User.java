@@ -1,10 +1,8 @@
 package com.salesianostriana.edu.trillium.user.model;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import com.salesianostriana.edu.trillium.post.model.Post;
+import lombok.*;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.NaturalId;
 import org.hibernate.annotations.Parameter;
@@ -20,6 +18,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -76,6 +75,11 @@ public class User implements UserDetails {
 
     @Builder.Default
     private LocalDateTime lastPasswordChangeAt = LocalDateTime.now();
+
+    @ToString.Exclude
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+    @Builder.Default
+    private Set<Post> posts = new HashSet<>();
 
 
 

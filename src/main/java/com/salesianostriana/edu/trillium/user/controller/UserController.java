@@ -41,7 +41,7 @@ public class UserController {
         return ResponseEntity.status(HttpStatus.CREATED).body(UserResponse.fromUser(user));
     }
 
-    // Más adelante podemos manejar la seguridad de acceso a esta petición
+
 
     @PostMapping("/auth/register/admin")
     public ResponseEntity<UserResponse> createUserWithAdminRole(@RequestBody CreateUserRequest createUserRequest) {
@@ -105,18 +105,14 @@ public class UserController {
     public ResponseEntity<UserResponse> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest,
                                                        @AuthenticationPrincipal User loggedUser) {
 
-        // Este código es mejorable.
-        // La validación de la contraseña nueva se puede hacer con un validador.
-        // La gestión de errores se puede hacer con excepciones propias
+
         try {
             if (userService.passwordMatch(loggedUser, changePasswordRequest.getOldPassword())) {
                 Optional<User> modified = userService.editPassword(loggedUser.getId(), changePasswordRequest.getNewPassword());
                 if (modified.isPresent())
                     return ResponseEntity.ok(UserResponse.fromUser(modified.get()));
             } else {
-                // Lo ideal es que esto se gestionara de forma centralizada
-                // Se puede ver cómo hacerlo en la formación sobre Validación con Spring Boot
-                // y la formación sobre Gestión de Errores con Spring Boot
+
                 throw new RuntimeException();
             }
         } catch (RuntimeException ex) {

@@ -82,6 +82,7 @@ public class SecurityConfig {
                 .authorizeRequests()
                 .antMatchers("/note/**").hasRole("USER")
                 .antMatchers("/auth/register/admin").hasRole("ADMIN")
+                .antMatchers("/upload/**").hasAnyRole("ADMIN", "USER")
                 .anyRequest().authenticated();
 
 
