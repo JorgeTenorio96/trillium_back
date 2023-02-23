@@ -54,7 +54,6 @@ public class UserController {
     @PostMapping("/auth/login")
     public ResponseEntity<JwtUserResponse> login(@RequestBody LoginRequest loginRequest) {
 
-        // Realizamos la autenticación
 
         Authentication authentication =
                 authManager.authenticate(
@@ -64,15 +63,12 @@ public class UserController {
                         )
                 );
 
-        // Una vez realizada, la guardamos en el contexto de seguridad
         SecurityContextHolder.getContext().setAuthentication(authentication);
 
-        // Devolvemos una respuesta adecuada
         String token = jwtProvider.generateToken(authentication);
 
         User user = (User) authentication.getPrincipal();
 
-        // Eliminamos el token (si existe) antes de crearlo, ya que cada usuario debería tener solamente un token de refresco simultáneo
         refreshTokenService.deleteByUser(user);
         RefreshToken refreshToken = refreshTokenService.createRefreshToken(user);
 
