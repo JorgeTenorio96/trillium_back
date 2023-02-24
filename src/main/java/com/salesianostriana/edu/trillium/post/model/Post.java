@@ -16,7 +16,7 @@ public class Post {
 
     @Id
     @GeneratedValue
-    private UUID id;
+    private Long id;
 
     private String title;
 

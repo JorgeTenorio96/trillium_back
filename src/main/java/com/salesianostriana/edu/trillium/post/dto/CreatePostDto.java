@@ -13,6 +13,6 @@ public class CreatePostDto {
 
     private String title;
 
-    private String image;
+
 
 }

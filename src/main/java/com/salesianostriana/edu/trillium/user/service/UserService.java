@@ -26,6 +26,7 @@ public class UserService {
                 .password(passwordEncoder.encode(createUserRequest.getPassword()))
                 .avatar(createUserRequest.getAvatar())
                 .fullName(createUserRequest.getFullName())
+                .email(createUserRequest.getEmail())
                 .roles(roles)
                 .build();
 
@@ -54,13 +55,13 @@ public class UserService {
 
     public Optional<User> edit(User user) {
 
-        // El username no se puede editar
-        // La contraseña se edita en otro método
+
 
         return userRepository.findById(user.getId())
                 .map(u -> {
                     u.setAvatar(user.getAvatar());
                     u.setFullName(user.getFullName());
+                    u.setEmail(user.getEmail());
                     return userRepository.save(u);
                 }).or(() -> Optional.empty());
 
@@ -68,7 +69,7 @@ public class UserService {
 
     public Optional<User> editPassword(UUID userId, String newPassword) {
 
-        // Aquí no se realizan comprobaciones de seguridad. Tan solo se modifica
+
 
         return userRepository.findById(userId)
                 .map(u -> {
@@ -83,7 +84,6 @@ public class UserService {
     }
 
     public void deleteById(UUID id) {
-        // Prevenimos errores al intentar borrar algo que no existe
         if (userRepository.existsById(id))
             userRepository.deleteById(id);
     }
