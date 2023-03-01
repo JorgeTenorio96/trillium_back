@@ -60,6 +60,9 @@ public class User implements UserDetails {
 
     private String email;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    private Set<Post> likes = new HashSet<>();
+
     @Builder.Default
     private boolean accountNonExpired = true;
     @Builder.Default
@@ -79,7 +82,7 @@ public class User implements UserDetails {
     private LocalDateTime lastPasswordChangeAt = LocalDateTime.now();
 
     @ToString.Exclude
-    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "author", fetch = FetchType.EAGER)
     @Builder.Default
     private Set<Post> posts = new HashSet<>();
 

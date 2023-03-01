@@ -39,8 +39,6 @@ public class SecurityConfig {
         AuthenticationManagerBuilder authenticationManagerBuilder =
                 http.getSharedObject(AuthenticationManagerBuilder.class);
 
-
-
         AuthenticationManager authenticationManager =
                 authenticationManagerBuilder.authenticationProvider(authenticationProvider())
                         .build();
@@ -48,7 +46,6 @@ public class SecurityConfig {
         return authenticationManager;
 
     }
-
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
@@ -80,7 +77,7 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/note/**").hasRole("USER")
+                .antMatchers("/post/**").hasRole("USER")
                 .antMatchers("/auth/register/admin").hasRole("ADMIN")
                 .antMatchers("/upload/**").hasAnyRole("ADMIN", "USER")
                 .anyRequest().authenticated();
@@ -97,7 +94,7 @@ public class SecurityConfig {
 
     @Bean
     public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web -> web.ignoring().antMatchers("/h2-console/**", "/auth/register", "/auth/login", "/refreshtoken"));
+        return (web -> web.ignoring().antMatchers("/h2-console/**", "/auth/register", "/auth/login", "/refreshtoken", "/swagger-ui/**", "/v3/api-docs/**"));
     }
 
 }
