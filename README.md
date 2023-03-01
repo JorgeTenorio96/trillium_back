@@ -21,7 +21,7 @@ Este es un proyecto práctico para el desarrollo de una API REST en lenguaje Jav
 
 También se ha prácticado el manejo de **PostMan**, **Swagger** y la metodología ágil **SCRUM** para el reparto de tareas a través la ramificación de estas con **GitHub**.
 
-El proyecto consiste en una sencilla app en la que puedes postear imágenes de todo tipo, desde 
+El proyecto consiste en una sencilla app en la que puedes postear imágenes de todo tipo, desde arte hasta memes graciosos.
 
 
 
